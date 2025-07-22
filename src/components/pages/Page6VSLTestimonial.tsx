@@ -35,7 +35,7 @@ export const Page6VSLTestimonial = () => {
             <div className="mb-8 animate-scale-in">
               <VideoPlayer 
                 title="Depoimentos de Clientes"
-                dropboxUrl="https://www.dropbox.com/scl/fi/6yxsga10zc5f6jpfhjdrl/FEEDBACK_EDITADO-17_07-14h.mov?rlkey=up1bmnxcxtivzpanmx1uszpqf&st=spe21zkb&dl=0"
+                videoUrl="https://res.cloudinary.com/dasax0uuq/video/upload/f_auto,q_auto/VIDEO_DEPOIMENTO_CURTO__1_reswia.mp4"
                 verticalFullscreen={true}
                 showCTAAfterSeconds={10}
                 onCTAClick={() => setCurrentPage(7)}

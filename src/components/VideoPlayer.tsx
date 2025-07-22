@@ -137,14 +137,15 @@ export const VideoPlayer = ({
   };
 
   // Configuração para VSL vertical responsivo com melhorias de acessibilidade e responsividade
-  if (verticalFullscreen && rawDropboxUrl) {
+  if (verticalFullscreen && (rawDropboxUrl || videoUrl)) {
+    const videoSrc = rawDropboxUrl || videoUrl;
     return (
       <div className="relative w-full max-w-sm mx-auto">
-        {/* Container responsivo com aspect ratio dinâmico */}
-        <div className="relative w-full bg-black rounded-lg overflow-hidden shadow-elegant aspect-[9/16] max-h-[80vh] min-h-[300px] sm:min-h-[500px]">
+        {/* Container responsivo com aspect ratio 9:16 (1080x1920) */}
+        <div className="relative w-full bg-black rounded-lg overflow-hidden shadow-elegant" style={{ aspectRatio: '9/16', maxHeight: '80vh', minHeight: '300px' }}>
           <video
             ref={videoRef}
-            src={rawDropboxUrl}
+            src={videoSrc}
             autoPlay
             muted={videoState.isMuted}
             playsInline
@@ -152,7 +153,7 @@ export const VideoPlayer = ({
             preload="auto"
             className="w-full h-full object-contain"
             onLoadStart={() => {
-              console.log('Video loading started for:', rawDropboxUrl);
+              console.log('Video loading started for:', videoSrc);
               setVideoState(prev => ({ ...prev, status: 'loading', isPlaying: false }));
             }}
             onCanPlay={() => {
@@ -161,7 +162,7 @@ export const VideoPlayer = ({
             }}
             onError={(e) => {
               console.error('Video error:', e);
-              console.error('Failed URL:', rawDropboxUrl);
+              console.error('Failed URL:', videoSrc);
               setVideoState(prev => ({ ...prev, status: 'error' }));
             }}
             onLoadedData={() => console.log('Video data loaded')}

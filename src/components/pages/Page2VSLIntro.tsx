@@ -35,7 +35,7 @@ export const Page2VSLIntro = () => {
             <div className="mb-8 animate-scale-in">
               <VideoPlayer 
                 title="Benefícios dos Chás Naturais"
-                dropboxUrl="https://www.dropbox.com/scl/fi/lyunqier0w3lysgq1f989/07-6.mp4?rlkey=tajmwep4vaars5qkqjfpg7dek&st=bxydy3qp&dl=0"
+                videoUrl="https://res.cloudinary.com/dasax0uuq/video/upload/f_auto,q_auto/07_6_tpxcud.mp4"
                 verticalFullscreen={true}
                 showCTAAfterSeconds={10}
                 onCTAClick={() => setCurrentPage(3)}

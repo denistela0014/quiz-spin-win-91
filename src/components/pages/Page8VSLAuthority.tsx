@@ -35,7 +35,7 @@ export const Page8VSLAuthority = () => {
             <div className="mb-8 animate-scale-in">
               <VideoPlayer 
                 title="Especialista em Fitoterapia"
-                dropboxUrl="https://www.dropbox.com/scl/fi/typw5euo0pr9a7hgkim5r/07-7.mp4?rlkey=20p7ju5hbw6nqlygngwebi902&st=5zccsve3&dl=0"
+                videoUrl="https://res.cloudinary.com/dasax0uuq/video/upload/f_auto,q_auto/07__7_1_uwpi0x.mp4"
                 verticalFullscreen={true}
                 showCTAAfterSeconds={10}
                 onCTAClick={() => setCurrentPage(9)}
