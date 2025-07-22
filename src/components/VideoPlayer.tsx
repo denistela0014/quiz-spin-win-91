@@ -146,7 +146,7 @@ export const VideoPlayer = ({
           <video
             ref={videoRef}
             src={videoSrc}
-            autoPlay
+            autoPlay={false}
             muted={videoState.isMuted}
             playsInline
             loop
