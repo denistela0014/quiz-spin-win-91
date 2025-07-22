@@ -183,13 +183,13 @@ export const VideoPlayer = ({
           {/* Botão de ativar som com melhorias de acessibilidade */}
           {videoState.isMuted && !videoState.hasStarted && videoState.status === 'ready' && (
             <div className="absolute inset-0 flex items-center justify-center bg-black/50">
-              <SoundButton
+               <SoundButton
                 onClick={handlePlayWithSound}
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-glow animate-pulse z-10 text-sm sm:text-base"
                 aria-label="Ativar som e reproduzir vídeo"
               >
-                🔊 Ativar Som e Play
+                Continuar
               </SoundButton>
             </div>
           )}
