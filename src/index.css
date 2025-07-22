@@ -1,0 +1,754 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Cores personalizadas do quiz - Tema verde e rosa */
+    --background: 100 100% 87%; /* #d2ffbe - Fundo verde claro */
+    --foreground: 0 0% 20%; /* #333333 - Texto escuro */
+
+    --card: 0 0% 100%; /* #ffffff - Branco para cards */
+    --card-foreground: 0 0% 20%; /* #333333 - Texto escuro */
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
+
+    --primary: 326 100% 70%; /* #FF66B2 - Rosa vibrante para destaque */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 326 100% 80%;
+
+    --secondary: 0 0% 100%; /* #ffffff - Fundo branco secundário */
+    --secondary-foreground: 0 0% 20%;
+
+    --muted: 100 50% 95%; /* Verde muito claro para elementos muted */
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 100 100% 87%; /* Verde claro para acentos */
+    --accent-foreground: 0 0% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Cor especial para botões de ação */
+    --action-button: 326 100% 70%; /* #FF66B2 - Rosa vibrante */
+    --action-button-foreground: 0 0% 100%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 142 76% 36%;
+
+    --radius: 1rem;
+
+    /* Gradientes temáticos */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--accent)) 50%, hsl(var(--background)) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--accent) / 0.1) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--primary)) 100%);
+
+    /* Sombras elegantes */
+    --shadow-elegant: 0 20px 60px -10px hsl(var(--primary) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.4);
+    --shadow-card: 0 10px 30px -5px hsl(220 15% 5% / 0.4);
+
+    /* Transições suaves */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+/* Layout responsivo para mobile */
+  .quiz-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Responsividade para imagens */
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* Responsividade para vídeos e iframes */
+  video, iframe {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Container responsivo base */
+  .container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  /* Media query para tablets */
+  @media (max-width: 1024px) {
+    .quiz-page {
+      padding: 1rem;
+    }
+    
+    h1 {
+      font-size: 2.5rem !important;
+    }
+    
+    h2 {
+      font-size: 2rem !important;
+    }
+    
+    .text-6xl {
+      font-size: 3rem !important;
+    }
+    
+    .text-4xl {
+      font-size: 2.25rem !important;
+    }
+  }
+
+  /* Media query para smartphones */
+  @media (max-width: 768px) {
+    .quiz-page {
+      padding: 0.5rem;
+      min-height: 100vh;
+      align-items: stretch;
+    }
+    
+    /* Ajuste de fontes para mobile */
+    body {
+      font-size: 14px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overflow-x: hidden;
+    }
+    
+    h1 {
+      font-size: 1.875rem !important;
+      line-height: 1.2 !important;
+    }
+    
+    h2 {
+      font-size: 1.5rem !important;
+      line-height: 1.3 !important;
+    }
+    
+    h3 {
+      font-size: 1.25rem !important;
+    }
+    
+    .text-6xl {
+      font-size: 2.25rem !important;
+    }
+    
+    .text-4xl {
+      font-size: 1.875rem !important;
+    }
+    
+    .text-3xl {
+      font-size: 1.5rem !important;
+    }
+    
+    .text-2xl {
+      font-size: 1.25rem !important;
+    }
+    
+    .text-xl {
+      font-size: 1.125rem !important;
+    }
+    
+    /* Ajuste de padding e margin para mobile */
+    .p-8, .p-12 {
+      padding: 1rem !important;
+    }
+    
+    .px-12 {
+      padding-left: 1.5rem !important;
+      padding-right: 1.5rem !important;
+    }
+    
+    .py-6 {
+      padding-top: 1rem !important;
+      padding-bottom: 1rem !important;
+    }
+    
+    /* Botões responsivos */
+    button {
+      width: 100% !important;
+      font-size: 1rem !important;
+      padding: 1rem !important;
+      min-height: 50px !important;
+      border-radius: 0.75rem !important;
+    }
+    
+    /* Cards responsivos */
+    .card {
+      margin: 0.5rem 0 !important;
+      border-radius: 1rem !important;
+    }
+    
+    /* Grid responsivo */
+    .grid-cols-2 {
+      grid-template-columns: 1fr !important;
+    }
+    
+    .grid-cols-3 {
+      grid-template-columns: 1fr !important;
+    }
+    
+    /* Espaçamento responsivo */
+    .space-y-6 > * + * {
+      margin-top: 1.5rem !important;
+    }
+    
+    .gap-6 {
+      gap: 1rem !important;
+    }
+    
+    .gap-4 {
+      gap: 0.75rem !important;
+    }
+    
+    /* VSL container responsivo */
+    .aspect-video {
+      aspect-ratio: 16/9 !important;
+      width: 100% !important;
+      max-height: 60vh !important;
+    }
+  }
+
+  /* Media query para dispositivos muito pequenos */
+  @media (max-width: 480px) {
+    .quiz-page {
+      padding: 0.25rem;
+    }
+    
+    body {
+      font-size: 13px;
+    }
+    
+    h1 {
+      font-size: 1.5rem !important;
+    }
+    
+    .text-4xl, .text-3xl {
+      font-size: 1.5rem !important;
+    }
+    
+    .text-2xl {
+      font-size: 1.125rem !important;
+    }
+    
+    .p-8, .p-12, .p-6 {
+      padding: 0.75rem !important;
+    }
+    
+    button {
+      padding: 0.875rem !important;
+      font-size: 0.9rem !important;
+    }
+    
+    /* VSL ainda menor para telas muito pequenas */
+    .aspect-video {
+      max-height: 50vh !important;
+    }
+  }
+}
+
+@layer utilities {
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .bg-gradient-background {
+    background: var(--gradient-background);
+  }
+  
+  .bg-gradient-card {
+    background: var(--gradient-card);
+  }
+  
+  .bg-gradient-accent {
+    background: var(--gradient-accent);
+  }
+  
+  .bg-action-button {
+    background: hsl(var(--action-button));
+    color: hsl(var(--action-button-foreground));
+  }
+  
+  .hover\:bg-action-button:hover {
+    background: hsl(var(--action-button) / 0.9);
+  }
+  
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+
+  /* Estilos específicos para CTAs otimizados */
+  .cta-primary {
+    background: var(--gradient-primary);
+    color: hsl(var(--primary-foreground));
+    box-shadow: var(--shadow-glow);
+    border-radius: 9999px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s;
+  }
+
+  .cta-primary:hover::before {
+    left: 100%;
+  }
+
+  .cta-sticky {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    animation: ctaSticky 1s ease-out;
+  }
+
+  .cta-floating {
+    box-shadow: 0 10px 40px -10px hsl(var(--primary) / 0.5);
+    transform: translateY(0);
+    transition: all 0.3s ease;
+  }
+
+  .cta-floating:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 50px -5px hsl(var(--primary) / 0.7);
+  }
+
+  /* Utilitários de responsividade */
+  .responsive-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-width: 100%;
+  }
+
+  .responsive-video {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    max-height: 80vh;
+    min-height: 200px;
+  }
+
+  .responsive-text {
+    font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+    line-height: 1.5;
+  }
+
+  .responsive-button {
+    width: 100%;
+    min-height: 50px;
+    padding: 1rem;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+  }
+
+  .responsive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .responsive-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .responsive-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+}
+
+@layer components {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.7s ease-out;
+  }
+  
+  .animate-bounce-in {
+    animation: bounceIn 0.8s ease-out;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+  
+  .animate-spin-wheel {
+    animation: spinWheel 3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .animate-cta-shake {
+    animation: ctaShake 0.6s ease-in-out;
+  }
+  
+  .animate-cta-glow {
+    animation: ctaGlow 2s ease-in-out infinite;
+  }
+
+  /* Classes para Sistema de Som Gamificado */
+  .animate-sound-wave {
+    animation: soundWave 1s ease-in-out infinite;
+  }
+  
+  .animate-confetti-explosion {
+    animation: confettiExplosion 1.5s ease-out;
+  }
+  
+  .animate-success-glow {
+    animation: successGlow 1s ease-out;
+  }
+  
+  .animate-error-shake {
+    animation: errorShake 0.8s ease-out;
+  }
+  
+  .animate-streak-bounce {
+    animation: streakBounce 0.6s ease-out;
+  }
+  
+  .animate-spatial-move {
+    animation: spatialMove 2s ease-in-out infinite;
+  }
+  
+  .animate-achievement-pulse {
+    animation: achievementPulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: var(--shadow-glow);
+  }
+  50% {
+    box-shadow: 0 0 60px hsl(var(--primary-glow) / 0.6);
+  }
+}
+
+@keyframes spinWheel {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1800deg);
+  }
+}
+
+@keyframes ctaShake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+  20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+@keyframes ctaGlow {
+  0%, 100% {
+    box-shadow: var(--shadow-glow);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 60px hsl(var(--primary-glow) / 0.8);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes ctaSticky {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Animações para Sistema de Som Gamificado */
+@keyframes soundWave {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes confettiExplosion {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5) rotate(180deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.5) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes successGlow {
+  0% {
+    box-shadow: 0 0 0 0 hsl(142 76% 36% / 0.8);
+    background: hsl(var(--background));
+  }
+  50% {
+    box-shadow: 0 0 30px 10px hsl(142 76% 36% / 0.4);
+    background: hsl(142 76% 96%);
+  }
+  100% {
+    box-shadow: 0 0 0 0 hsl(142 76% 36% / 0);
+    background: hsl(var(--background));
+  }
+}
+
+@keyframes errorShake {
+  0%, 100% { 
+    transform: translateX(0);
+    background: hsl(var(--background));
+  }
+  10%, 30%, 50%, 70%, 90% { 
+    transform: translateX(-4px);
+    background: hsl(0 84% 96%);
+  }
+  20%, 40%, 60%, 80% { 
+    transform: translateX(4px);
+    background: hsl(0 84% 96%);
+  }
+}
+
+@keyframes streakBounce {
+  0% {
+    transform: scale(0.8) translateY(0px);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) translateY(-10px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes spatialMove {
+  0% {
+    transform: translateX(0px) translateY(0px);
+    filter: brightness(1);
+  }
+  25% {
+    transform: translateX(-5px) translateY(-3px);
+    filter: brightness(1.1);
+  }
+  50% {
+    transform: translateX(5px) translateY(-5px);
+    filter: brightness(1.2);
+  }
+  75% {
+    transform: translateX(-3px) translateY(3px);
+    filter: brightness(1.1);
+  }
+  100% {
+    transform: translateX(0px) translateY(0px);
+    filter: brightness(1);
+  }
+}
+
+@keyframes achievementPulse {
+  0% {
+    transform: scale(1) rotate(0deg);
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0.8);
+  }
+  25% {
+    transform: scale(1.05) rotate(5deg);
+    box-shadow: 0 0 20px 5px hsl(var(--primary) / 0.6);
+  }
+  50% {
+    transform: scale(1.1) rotate(0deg);
+    box-shadow: 0 0 40px 10px hsl(var(--primary) / 0.4);
+  }
+  75% {
+    transform: scale(1.05) rotate(-5deg);
+    box-shadow: 0 0 20px 5px hsl(var(--primary) / 0.6);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0);
+  }
+}
