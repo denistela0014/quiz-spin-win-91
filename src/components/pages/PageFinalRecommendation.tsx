@@ -90,20 +90,44 @@ export const PageFinalRecommendation = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto space-y-8">
           
-          {/* Header de Conquista */}
-          <Card className={`p-8 text-center bg-gradient-to-r ${performance.color} text-white shadow-2xl animate-fade-in`}>
-            <div className="space-y-4">
-              <Trophy className="h-16 w-16 mx-auto animate-bounce-in" />
-              <h1 className="text-4xl md:text-5xl font-bold">{performance.title}</h1>
-              <p className="text-xl text-white/90">{performance.message}</p>
+          {/* Header Principal */}
+          <Card className="p-8 text-center bg-gradient-card shadow-elegant animate-fade-in">
+            <div className="space-y-6">
+              <h1 className="text-3xl md:text-5xl font-bold text-foreground">
+                ✨ Pronto! Aqui está sua receita personalizada de chá 💚
+              </h1>
               
-              <div className="flex items-center justify-center gap-4 mt-6">
-                <div className="bg-white/20 px-4 py-2 rounded-full">
-                  <span className="text-lg font-bold">{correctAnswers}/4 Acertos</span>
+              <div className="text-lg text-muted-foreground leading-relaxed space-y-4">
+                <p>
+                  Com base nas suas respostas, nossa nutricionista especialista preparou um chá exclusivo para o seu metabolismo, rotina e objetivos.
+                </p>
+                
+                <p>
+                  Essa combinação única de ervas naturais foi desenvolvida para ajudar mulheres como você a:
+                </p>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                  <div className="flex items-center space-x-3 text-left">
+                    <span className="text-2xl">✅</span>
+                    <span>Reduzir o inchaço abdominal</span>
+                  </div>
+                  <div className="flex items-center space-x-3 text-left">
+                    <span className="text-2xl">🔥</span>
+                    <span>Acelerar o metabolismo naturalmente</span>
+                  </div>
+                  <div className="flex items-center space-x-3 text-left">
+                    <span className="text-2xl">💧</span>
+                    <span>Desintoxicar o corpo e eliminar retenção</span>
+                  </div>
+                  <div className="flex items-center space-x-3 text-left">
+                    <span className="text-2xl">🌿</span>
+                    <span>Emagrecer com saúde, sem dietas malucas</span>
+                  </div>
                 </div>
-                <div className="bg-white/20 px-4 py-2 rounded-full">
-                  <span className="text-lg font-bold">{performance.badge}</span>
-                </div>
+                
+                <p className="text-primary font-semibold text-xl">
+                  Milhares de mulheres já usaram essa receita para transformar seus corpos e sua autoestima — agora é a sua vez!
+                </p>
               </div>
             </div>
           </Card>

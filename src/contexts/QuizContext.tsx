@@ -40,7 +40,7 @@ export const QuizProvider = ({ children }: QuizProviderProps) => {
   const [totalAnswers, setTotalAnswers] = useState(0);
   const [streakCount, setStreakCount] = useState(0);
   
-  const totalSteps = 12;
+  const totalSteps = 11;
   const progress = (currentPage / totalSteps) * 100;
 
   const addAnswer = (question: string, answer: string) => {

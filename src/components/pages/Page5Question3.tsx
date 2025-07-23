@@ -14,7 +14,7 @@ export const Page5Question3 = () => {
   const handleAnswer = (answer: string) => {
     const responseTime = Date.now() - responseStartTime;
     setSelectedAnswer(answer);
-    addAnswer('Qual sabor prefere?', answer);
+    addAnswer('Como anda sua rotina com a alimentação?', answer);
     
     // Som espacial baseado no tempo de resposta
     const isQuickResponse = responseTime < 3000;
@@ -27,10 +27,9 @@ export const Page5Question3 = () => {
   };
 
   const options = [
-    { id: 'citrico', text: '🍋 Cítrico e refrescante', icon: '🌊' },
-    { id: 'doce', text: '🍯 Doce e suave', icon: '🧸' },
-    { id: 'herbal', text: '🌿 Herbal e natural', icon: '🍃' },
-    { id: 'intenso', text: '💪 Forte e intenso', icon: '🔥' }
+    { id: 'desregrada', text: 'Como muito fora de hora e pulo refeições.', icon: '😓' },
+    { id: 'tentando', text: 'Tento comer saudável, mas não tenho disciplina.', icon: '😅' },
+    { id: 'equilibrada', text: 'Sigo uma alimentação equilibrada na maioria dos dias.', icon: '😊' }
   ];
 
   return (
@@ -42,14 +41,11 @@ export const Page5Question3 = () => {
           <Card className="p-8 bg-gradient-card backdrop-blur-sm shadow-elegant animate-fade-in">
             <div className="text-center mb-8">
               <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                👅 Qual perfil de sabor combina com você?
+                Como anda sua rotina com a alimentação?
               </h1>
-              <p className="text-xl text-muted-foreground">
-                Seu paladar é único, vamos descobrir seu match perfeito
-              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+            <div className="grid grid-cols-1 gap-4 max-w-2xl mx-auto">
               {options.map((option, index) => (
                 <SoundButton
                   key={option.id}

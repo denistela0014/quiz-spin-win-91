@@ -18,7 +18,7 @@ export const Page3Question1 = () => {
   const handleAnswer = (answer: string) => {
     const responseTime = Date.now() - responseStartTime;
     setSelectedAnswer(answer);
-    addAnswer('Qual é seu objetivo principal?', answer);
+    addAnswer('Como você se sente com o seu corpo hoje?', answer);
     addCorrectAnswer(); // Registrar como resposta correta
     
     // Som espacial baseado no tempo de resposta
@@ -33,10 +33,10 @@ export const Page3Question1 = () => {
   };
 
   const options = [
-    { id: 'energia', text: '⚡ Mais energia e disposição', icon: '💪' },
-    { id: 'relaxar', text: '🧘 Relaxar e reduzir stress', icon: '😌' },
-    { id: 'emagrecimento', text: '🔥 Acelerar metabolismo', icon: '🏃‍♀️' },
-    { id: 'saude', text: '🌿 Melhorar saúde geral', icon: '❤️' }
+    { id: 'inchada', text: 'Me sinto inchada e desconfortável com minha barriga.', icon: '😟' },
+    { id: 'emagrecer', text: 'Queria emagrecer, mas não consigo manter o foco.', icon: '💭' },
+    { id: 'tentei-tudo', text: 'Já tentei de tudo, mas nada parece funcionar.', icon: '😓' },
+    { id: 'melhorar', text: 'Me sinto bem, mas quero melhorar ainda mais.', icon: '💪' }
   ];
 
   return (
@@ -54,11 +54,8 @@ export const Page3Question1 = () => {
           <Card className={`p-8 bg-gradient-card backdrop-blur-sm shadow-elegant animate-fade-in ${feedbackAnimation}`}>
             <div className="text-center mb-8">
               <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                🎯 Qual é seu objetivo principal?
+                Como você se sente com o seu corpo hoje?
               </h1>
-              <p className="text-xl text-muted-foreground">
-                Vamos encontrar o chá perfeito para suas necessidades
-              </p>
             </div>
 
             <div className="grid grid-cols-1 gap-3 sm:gap-4 max-w-2xl mx-auto">

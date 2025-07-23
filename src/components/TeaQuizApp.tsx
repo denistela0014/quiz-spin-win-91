@@ -11,11 +11,12 @@ import { Page4Question2 } from '@/components/pages/Page4Question2';
 import { Page5Question3 } from '@/components/pages/Page5Question3';
 import { Page6VSLTestimonial } from '@/components/pages/Page6VSLTestimonial';
 import { Page7Question4 } from '@/components/pages/Page7Question4';
-import { Page8VSLAuthority } from '@/components/pages/Page8VSLAuthority';
+import { Page8Question5 } from '@/components/pages/Page8Question5';
 import { Page9VSLFinal } from '@/components/pages/Page9VSLFinal';
-import { Page10Gamification } from '@/components/pages/Page10Gamification';
+import { PageLoading } from '@/components/pages/PageLoading';
 import { Page11Checkout } from '@/components/pages/Page11Checkout';
 import { PageFinalRecommendation } from '@/components/pages/PageFinalRecommendation';
+import { PageError } from '@/components/pages/PageError';
 
 export const TeaQuizApp = () => {
   const { currentPage, progress } = useQuiz();
@@ -62,15 +63,17 @@ export const TeaQuizApp = () => {
       case 7:
         return <Page7Question4 />;
       case 8:
-        return <Page8VSLAuthority />;
+        return <Page8Question5 />;
       case 9:
         return <Page9VSLFinal />;
       case 10:
-        return <Page10Gamification />;
+        return <PageLoading />;
       case 11:
-        return <Page11Checkout />;
-      case 12:
         return <PageFinalRecommendation />;
+      case 12:
+        return <Page11Checkout />;
+      case 99:
+        return <PageError />;
       default:
         return <Page1Intro />;
     }

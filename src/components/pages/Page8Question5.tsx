@@ -5,31 +5,36 @@ import { ProgressBar } from '@/components/ProgressBar';
 import { useQuiz } from '@/contexts/QuizContext';
 import { useAdvancedSpatialSounds } from '@/hooks/useAdvancedSpatialSounds';
 
-export const Page4Question2 = () => {
+export const Page8Question5 = () => {
   const { setCurrentPage, addAnswer, currentPage, totalSteps } = useQuiz();
   const [selectedAnswer, setSelectedAnswer] = useState<string>('');
   const [responseStartTime] = useState<number>(Date.now());
-  const { playAnswerFeedback, playPageTransition } = useAdvancedSpatialSounds();
+  const { playAnswerFeedback, playPageTransition, playMilestone } = useAdvancedSpatialSounds();
 
   const handleAnswer = (answer: string) => {
     const responseTime = Date.now() - responseStartTime;
     setSelectedAnswer(answer);
-    addAnswer('Sua barriga costuma ficar inchada mesmo quando você come pouco?', answer);
+    addAnswer('Você se movimenta durante o dia?', answer);
     
-    // Som espacial baseado no tempo de resposta
+    // Som espacial especial para a última pergunta
     const isQuickResponse = responseTime < 3000;
     playAnswerFeedback(true, isQuickResponse, responseTime);
     
+    // Som de marco especial para completar todas as perguntas
+    setTimeout(() => {
+      playMilestone('achievement');
+    }, 400);
+    
     setTimeout(() => {
       playPageTransition();
-      setCurrentPage(5);
+      setCurrentPage(10); // Vai para loading
     }, 800);
   };
 
   const options = [
-    { id: 'sempre', text: 'Sim, quase sempre. Isso me incomoda muito.', icon: '😣' },
-    { id: 'as-vezes', text: 'Às vezes, principalmente no fim do dia.', icon: '😐' },
-    { id: 'pouco', text: 'Não muito, só em dias específicos.', icon: '😊' }
+    { id: 'sedentaria', text: 'Não, passo a maior parte do tempo sentada.', icon: '💺' },
+    { id: 'pouco', text: 'Caminho um pouco ou faço algo em casa.', icon: '🚶‍♀️' },
+    { id: 'ativa', text: 'Faço treinos ou exercícios regularmente.', icon: '💪' }
   ];
 
   return (
@@ -41,7 +46,7 @@ export const Page4Question2 = () => {
           <Card className="p-8 bg-gradient-card backdrop-blur-sm shadow-elegant animate-fade-in">
             <div className="text-center mb-8">
               <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Sua barriga costuma ficar inchada mesmo quando você come pouco?
+                Você se movimenta durante o dia?
               </h1>
             </div>
 
@@ -70,10 +75,18 @@ export const Page4Question2 = () => {
             {selectedAnswer && (
               <div className="text-center mt-6 animate-bounce-in">
                 <p className="text-primary font-semibold">
-                  ✅ Ótima escolha! Personalizando sua experiência...
+                  ✅ Perfeito! Analisando seu perfil completo...
                 </p>
               </div>
             )}
+
+            <div className="text-center mt-8">
+              <div className="bg-accent/20 p-4 rounded-lg">
+                <p className="text-lg font-semibold text-accent-foreground">
+                  🎉 Próximo: Sua receita personalizada + desconto exclusivo!
+                </p>
+              </div>
+            </div>
           </Card>
         </div>
       </div>

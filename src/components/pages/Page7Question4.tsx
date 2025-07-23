@@ -14,7 +14,7 @@ export const Page7Question4 = () => {
   const handleAnswer = (answer: string) => {
     const responseTime = Date.now() - responseStartTime;
     setSelectedAnswer(answer);
-    addAnswer('Qual é seu estilo de vida?', answer);
+    addAnswer('Você bebe bastante água durante o dia?', answer);
     
     // Som espacial especial para a última pergunta
     const isQuickResponse = responseTime < 3000;
@@ -32,10 +32,9 @@ export const Page7Question4 = () => {
   };
 
   const options = [
-    { id: 'ativo', text: '🏃‍♀️ Muito ativo e esportivo', icon: '💪' },
-    { id: 'moderado', text: '🚶‍♂️ Moderadamente ativo', icon: '⚖️' },
-    { id: 'sedentario', text: '🪑 Sedentário (trabalho mesa)', icon: '💻' },
-    { id: 'estressado', text: '😰 Estressado e ansioso', icon: '🌪️' }
+    { id: 'pouca', text: 'Quase não bebo água, esqueço facilmente.', icon: '😓' },
+    { id: 'tentando', text: 'Tento lembrar, mas nem sempre consigo.', icon: '😅' },
+    { id: 'bastante', text: 'Sim! Tenho o hábito de beber bastante água.', icon: '💧' }
   ];
 
   return (
@@ -47,14 +46,11 @@ export const Page7Question4 = () => {
           <Card className="p-8 bg-gradient-card backdrop-blur-sm shadow-elegant animate-fade-in">
             <div className="text-center mb-8">
               <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                🎯 Última pergunta: Qual é seu estilo de vida?
+                Você bebe bastante água durante o dia?
               </h1>
-              <p className="text-xl text-muted-foreground">
-                Isso nos ajudará a personalizar ainda mais sua recomendação
-              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+            <div className="grid grid-cols-1 gap-4 max-w-2xl mx-auto">
               {options.map((option, index) => (
                 <SoundButton
                   key={option.id}
